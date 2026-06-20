@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Changer App</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: background-color 0.5s;
+        }
+
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            min-width: 350px;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+
+        .color-input-group {
+            margin: 20px 0;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        #colorPicker {
+            width: 100px;
+            height: 50px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        button {
+            padding: 12px 25px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+            color: white;
+            min-width: 120px;
+        }
+
+        #changeBtn {
+            background-color: #2196F3;
+        }
+
+        #changeBtn:hover {
+            background-color: #0b7dda;
+            transform: scale(1.05);
+        }
+
+        #randomBtn {
+            background-color: #FF9800;
+        }
+
+        #randomBtn:hover {
+            background-color: #e68900;
+            transform: scale(1.05);
+        }
+
+        .info {
+            margin-top: 30px;
+            font-size: 14px;
+            color: #666;
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .color-code {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 20px;
+            font-family: 'Courier New', monospace;
+            background: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎨 Color Changer</h1>
+        
+        <div class="color-input-group">
+            <input type="color" id="colorPicker" value="#667eea">
+            <button id="changeBtn">Change Color</button>
+            <button id="randomBtn">Random Color</button>
+        </div>
+
+        <div class="color-code" id="colorCode">#667eea</div>
+
+        <div class="info">
+            <p>💡 <strong>How to use:</strong></p>
+            <p>1️⃣ Select a color from the picker</p>
+            <p>2️⃣ Click "Change Color" or "Random Color"</p>
+            <p>3️⃣ Your choice is saved automatically!</p>
+        </div>
+    </div>
+
+    <script src="02_colorChanger.js"></script>
+    <script>
+        // Update color code display
+        const colorPicker = document.getElementById('colorPicker');
+        const colorCode = document.getElementById('colorCode');
+
+        colorPicker.addEventListener('input', () => {
+            colorCode.textContent = colorPicker.value.toUpperCase();
+        });
+    </script>
+</body>
+</html>

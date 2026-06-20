@@ -14,3 +14,10 @@ console.log(uppercase);  // Output: [ALI, AHMED, FATIMA]
 const scores = [50, 60, 70, 80];
 const boosted = scores.map(score => score + 10);
 console.log(boosted);  // Output: [60, 70, 80, 90]
+
+function add(a,b){
+    return a + b;
+}
+const add = (a,b) => {
+    return a + b;
+}

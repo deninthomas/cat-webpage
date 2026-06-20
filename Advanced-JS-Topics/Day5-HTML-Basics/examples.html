@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Basics Examples</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 30px;
+            border-radius: 8px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            color: #333;
+            margin: 25px 0 15px 0;
+            border-bottom: 3px solid #007bff;
+            padding-bottom: 10px;
+        }
+
+        .example {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        pre {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 15px 0;
+            border-left: 4px solid #007bff;
+        }
+
+        code {
+            font-family: 'Courier New', monospace;
+            background: #f5f5f5;
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+
+        ul, ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .highlight {
+            background-color: #fff3cd;
+            padding: 15px;
+            border-left: 4px solid #ffc107;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>📚 HTML Basics Examples</h1>
+        <p>Complete guide to HTML elements and structure</p>
+    </header>
+
+    <div class="container">
+        <!-- Headings -->
+        <section class="example">
+            <h2>Headings</h2>
+            <p>HTML provides six levels of headings:</p>
+            <h1>This is Heading 1</h1>
+            <h2>This is Heading 2</h2>
+            <h3>This is Heading 3</h3>
+            <h4>This is Heading 4</h4>
+            <h5>This is Heading 5</h5>
+            <h6>This is Heading 6</h6>
+        </section>
+
+        <!-- Paragraphs -->
+        <section class="example">
+            <h2>Paragraphs & Text Formatting</h2>
+            <p>This is a regular paragraph. It contains multiple lines of text that explain something important.</p>
+            <p>
+                Here's another paragraph. <br>
+                This text is on a new line.
+            </p>
+            <p>
+                <b>Bold text</b> using &lt;b&gt; tag<br>
+                <strong>Strong text</strong> using &lt;strong&gt; tag<br>
+                <i>Italic text</i> using &lt;i&gt; tag<br>
+                <em>Emphasized text</em> using &lt;em&gt; tag<br>
+                <mark>Highlighted text</mark> using &lt;mark&gt; tag<br>
+                <small>Small text</small> using &lt;small&gt; tag<br>
+                <del>Deleted text</del> using &lt;del&gt; tag<br>
+                <ins>Inserted text</ins> using &lt;ins&gt; tag
+            </p>
+        </section>
+
+        <!-- Lists -->
+        <section class="example">
+            <h2>Lists</h2>
+            
+            <h3>Unordered List</h3>
+            <ul>
+                <li>JavaScript</li>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>Web Design</li>
+            </ul>
+
+            <h3>Ordered List</h3>
+            <ol>
+                <li>First step - Learn HTML</li>
+                <li>Second step - Learn CSS</li>
+                <li>Third step - Learn JavaScript</li>
+                <li>Fourth step - Build projects</li>
+            </ol>
+        </section>
+
+        <!-- Links -->
+        <section class="example">
+            <h2>Links</h2>
+            <p>
+                <a href="https://www.google.com" target="_blank">Visit Google (opens in new tab)</a>
+            </p>
+            <p>
+                <a href="#headings-section">Jump to Headings Section</a>
+            </p>
+            <p>
+                <a href="portfolio.html">View Portfolio Example</a>
+            </p>
+        </section>
+
+        <!-- Images -->
+        <section class="example">
+            <h2>Images</h2>
+            <p>Sample image with description:</p>
+            <img src="https://via.placeholder.com/300x200" alt="Placeholder image" style="max-width: 100%; border-radius: 8px;">
+            <p><small>This is a placeholder image</small></p>
+        </section>
+
+        <!-- Forms -->
+        <section class="example">
+            <h2>Forms</h2>
+            <form>
+                <div style="margin-bottom: 15px;">
+                    <label for="name"><strong>Full Name:</strong></label><br>
+                    <input type="text" id="name" placeholder="Enter your full name" style="width: 100%; padding: 8px; margin-top: 5px;">
+                </div>
+
+                <div style="margin-bottom: 15px;">
+                    <label for="email"><strong>Email:</strong></label><br>
+                    <input type="email" id="email" placeholder="Enter your email" style="width: 100%; padding: 8px; margin-top: 5px;">
+                </div>
+
+                <div style="margin-bottom: 15px;">
+                    <label for="country"><strong>Country:</strong></label><br>
+                    <select id="country" style="width: 100%; padding: 8px; margin-top: 5px;">
+                        <option>Select a country</option>
+                        <option>United States</option>
+                        <option>United Kingdom</option>
+                        <option>Canada</option>
+                        <option>India</option>
+                    </select>
+                </div>
+
+                <div style="margin-bottom: 15px;">
+                    <label for="message"><strong>Message:</strong></label><br>
+                    <textarea id="message" placeholder="Enter your message" rows="4" style="width: 100%; padding: 8px; margin-top: 5px;"></textarea>
+                </div>
+
+                <button type="submit" style="background-color: #007bff; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px;">Submit</button>
+            </form>
+        </section>
+
+        <!-- Tables -->
+        <section class="example">
+            <h2>Tables</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>City</th>
+                        <th>Profession</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>John Smith</td>
+                        <td>28</td>
+                        <td>New York</td>
+                        <td>Web Developer</td>
+                    </tr>
+                    <tr>
+                        <td>Jane Doe</td>
+                        <td>32</td>
+                        <td>San Francisco</td>
+                        <td>UI Designer</td>
+                    </tr>
+                    <tr>
+                        <td>Bob Johnson</td>
+                        <td>26</td>
+                        <td>London</td>
+                        <td>Full Stack Developer</td>
+                    </tr>
+                    <tr>
+                        <td>Alice Brown</td>
+                        <td>30</td>
+                        <td>Boston</td>
+                        <td>Product Manager</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Semantic HTML -->
+        <section class="example">
+            <h2>Semantic HTML</h2>
+            <div class="highlight">
+                <p><strong>Semantic HTML:</strong> Uses meaningful tags that clearly describe their content.</p>
+            </div>
+            <p><strong>Examples:</strong></p>
+            <ul>
+                <li>&lt;header&gt; - Page or section header</li>
+                <li>&lt;nav&gt; - Navigation links</li>
+                <li>&lt;main&gt; - Main content</li>
+                <li>&lt;article&gt; - Self-contained content</li>
+                <li>&lt;section&gt; - Thematic grouping</li>
+                <li>&lt;aside&gt; - Sidebar content</li>
+                <li>&lt;footer&gt; - Page or section footer</li>
+            </ul>
+        </section>
+
+        <!-- Footer -->
+        <footer style="text-align: center; margin-top: 40px; padding: 20px; background: #333; color: white; border-radius: 8px;">
+            <p>&copy; 2024 HTML Basics Tutorial. Happy Learning!</p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Push and Pop - JavaScript Demo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📊 Array Push and Pop Demo</h1>
+            <p>Learn how push() and pop() work with JavaScript arrays</p>
+        </header>
+
+        <div class="content">
+            <!-- Section 1: Push Values -->
+            <div class="section">
+                <h2>1️⃣ PUSH - Add Values to Array</h2>
+                <p>The <code>push()</code> method adds values to the <strong>end</strong> of an array.</p>
+
+                <div class="input-group">
+                    <label for="pushValue">Enter a number to push:</label><br>
+                    <input type="number" id="pushValue" placeholder="Enter value (1-100)" min="1" max="100">
+                </div>
+
+                <div class="button-group">
+                    <button class="btn-success" onclick="pushSingleValue()">➕ Push Single Value</button>
+                    <button class="btn-info" onclick="pushMultipleValues()">➕ Push 1-5 (Auto)</button>
+                </div>
+
+                <div class="display-box">
+                    <h4>📈 Current Array:</h4>
+                    <div id="arrayDisplay">[]</div>
+                    <div id="arrayLength">Length: 0</div>
+                </div>
+
+                <div class="info-box">
+                    💡 <strong>How it works:</strong> Each value is added to the end of the array. The array grows with each push!
+                </div>
+            </div>
+
+            <!-- Section 2: Pop Values -->
+            <div class="section">
+                <h2>2️⃣ POP - Remove Last Value</h2>
+                <p>The <code>pop()</code> method removes and returns the <strong>last</strong> value from an array.</p>
+
+                <div class="button-group">
+                    <button class="btn-danger" onclick="popValue()">❌ Pop Last Value</button>
+                    <button class="btn-warning" onclick="popAllValues()">❌ Pop All Values</button>
+                </div>
+
+                <div class="display-box">
+                    <h4>📊 Current Array:</h4>
+                    <div id="arrayDisplay2">[]</div>
+                    <div id="arrayLength2">Length: 0</div>
+                </div>
+
+                <div class="warning-box">
+                    ⚠️ <strong>Note:</strong> When the array is empty, pop() returns undefined and doesn't change the array.
+                </div>
+            </div>
+
+            <!-- Section 3: Reverse Array -->
+            <div class="section">
+                <h2>3️⃣ REVERSE - Display Array Backwards</h2>
+                <p>Use a <code>for loop</code> to display array values in reverse order.</p>
+
+                <div class="button-group">
+                    <button class="btn-info" onclick="displayReverse()">🔄 Show Array Reversed</button>
+                </div>
+
+                <div class="display-box">
+                    <h4>🔁 Reversed Array:</h4>
+                    <div id="reverseDisplay">[]</div>
+                </div>
+
+                <div class="code-block">
+// Using a for loop to reverse:
+for (let i = array.length - 1; i >= 0; i--) {
+    console.log(array[i]);
+}
+                </div>
+            </div>
+
+            <!-- Section 4: Statistics -->
+            <div class="section">
+                <h2>📈 Array Statistics</h2>
+                <div class="stats">
+                    <div class="stat-card">
+                        <h4>Total Items</h4>
+                        <div class="value" id="statLength">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <h4>Operations</h4>
+                        <div class="value" id="statOps">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <h4>Total Pushed</h4>
+                        <div class="value" id="statPushed">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <h4>Total Popped</h4>
+                        <div class="value" id="statPopped">0</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 5: Console -->
+            <div class="section">
+                <h2>📝 JavaScript Console Log</h2>
+                <p>Watch the console as operations happen:</p>
+
+                <div class="button-group">
+                    <button onclick="clearConsole()">🗑️ Clear Console</button>
+                    <button onclick="viewConsoleInBrowser()">📺 View in Browser Console (F12)</button>
+                </div>
+
+                <div class="console-box" id="consoleBox">
+                    <div class="log-entry">
+                        <span class="log-info">[INFO]</span> Console initialized. Operations will appear here...
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 6: Control -->
+            <div class="section">
+                <h2>🎮 Control Panel</h2>
+                
+                <div class="button-group">
+                    <button onclick="resetArray()">🔄 Reset Array</button>
+                    <button onclick="runDemo()">▶️ Run Full Demo</button>
+                </div>
+
+                <div class="info-box">
+                    💡 <strong>Run Full Demo:</strong> This will automatically push 5 values, pop 2 values, and show the reverse!
+                </div>
+            </div>
+
+            <!-- Section 7: Code Examples -->
+            <div class="section">
+                <h2>📖 Code Examples</h2>
+
+                <h3>Push Example:</h3>
+                <div class="code-block">
+let array = [];
+array.push(10);      // [10]
+array.push(20);      // [10, 20]
+array.push(30, 40);  // [10, 20, 30, 40]
+                </div>
+
+                <h3>Pop Example:</h3>
+                <div class="code-block">
+let array = [10, 20, 30, 40];
+array.pop();  // Removes 40, returns 40
+              // array is now [10, 20, 30]
+array.pop();  // Removes 30, returns 30
+              // array is now [10, 20]
+                </div>
+
+                <h3>Reverse with For Loop:</h3>
+                <div class="code-block">
+let array = [10, 20, 30, 40];
+
+// Forward
+for (let i = 0; i < array.length; i++) {
+    console.log(array[i]); // 10, 20, 30, 40
+}
+
+// Backward (Reverse)
+for (let i = array.length - 1; i >= 0; i--) {
+    console.log(array[i]); // 40, 30, 20, 10
+}
+                </div>
+            </div>
+
+            <!-- Section 8: Key Concepts -->
+            <div class="section">
+                <h2>✅ Key Concepts</h2>
+                
+                <h3>📌 Push:</h3>
+                <ul>
+                    <li>✓ Adds one or more values to the <strong>end</strong> of array</li>
+                    <li>✓ Returns the new length of the array</li>
+                    <li>✓ Modifies the original array</li>
+                    <li>✓ Syntax: <code>array.push(value1, value2, ...)</code></li>
+                </ul>
+
+                <h3>📌 Pop:</h3>
+                <ul>
+                    <li>✓ Removes and returns the <strong>last</strong> value</li>
+                    <li>✓ Returns undefined if array is empty</li>
+                    <li>✓ Modifies the original array</li>
+                    <li>✓ Syntax: <code>array.pop()</code></li>
+                </ul>
+
+                <h3>📌 For Loop (Reverse):</h3>
+                <ul>
+                    <li>✓ Start from: <code>i = array.length - 1</code> (last element)</li>
+                    <li>✓ Condition: <code>i >= 0</code> (until first element)</li>
+                    <li>✓ Decrement: <code>i--</code> (go backwards)</li>
+                    <li>✓ Access: <code>array[i]</code> (get element)</li>
+                </ul>
+            </div>
+        </div>
+
+        <footer>
+            <h3>🎓 Array Push & Pop Learning Demo</h3>
+            <p>Master JavaScript array manipulation with this interactive tool</p>
+            <p>&copy; 2024 JavaScript Learning Path</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

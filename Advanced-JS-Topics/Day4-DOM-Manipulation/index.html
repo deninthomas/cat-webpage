@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 4 - DOM Manipulation Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 40px 20px;
+        }
+
+        h2 {
+            color: #667eea;
+            font-size: 1.8em;
+            margin: 30px 0 20px 0;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .concept-section {
+            background: #f9f9f9;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .concept-section h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+
+        .demo-box {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        .demo-box p {
+            margin-bottom: 10px;
+        }
+
+        button {
+            background-color: #667eea;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            margin: 5px 5px 5px 0;
+            transition: all 0.3s;
+        }
+
+        button:hover {
+            background-color: #764ba2;
+            transform: scale(1.05);
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        #output {
+            background: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            min-height: 30px;
+            border: 1px solid #ddd;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .project-card {
+            background: #f9f9f9;
+            border: 2px solid #667eea;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .project-card h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .project-card p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .project-card a {
+            display: inline-block;
+            background-color: #667eea;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        .project-card a:hover {
+            background-color: #764ba2;
+        }
+
+        .nav-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .section-divider {
+            border: 2px solid #667eea;
+            margin: 40px 0;
+        }
+
+        .tip {
+            background: #d4edda;
+            border: 1px solid #28a745;
+            color: #155724;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+
+        .warning {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        #demo-element {
+            background: #667eea;
+            color: white;
+            padding: 20px;
+            margin: 10px 0;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        .input-group {
+            margin: 10px 0;
+        }
+
+        input {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎯 Day 4 - DOM Manipulation</h1>
+            <p class="subtitle">Learn to interact with HTML elements using JavaScript</p>
+        </header>
+
+        <div class="content">
+            <!-- Introduction -->
+            <section>
+                <h2>📚 What is DOM?</h2>
+                <p>The <strong>DOM (Document Object Model)</strong> is a representation of your HTML in JavaScript. It allows you to access and modify HTML elements dynamically.</p>
+                
+                <div class="tip">
+                    <strong>💡 Tip:</strong> DOM manipulation is how you create interactive web pages! Every button click, form submission, and animation happens through DOM manipulation.
+                </div>
+            </section>
+
+            <!-- querySelector Section -->
+            <section>
+                <h2>1️⃣ querySelector() - Selecting Elements</h2>
+                
+                <div class="concept-section">
+                    <h3>What is it?</h3>
+                    <p>Selects the <strong>first</strong> element that matches a CSS selector.</p>
+                </div>
+
+                <div class="demo-box">
+                    <h4>Try it:</h4>
+                    <button onclick="demoQuerySelector()">Run querySelector Demo</button>
+                    <div id="output"></div>
+                </div>
+
+                <div class="concept-section">
+                    <h3>Code Examples:</h3>
+                    <div class="code-block">// By ID
+const element = document.querySelector('#myId');
+
+// By class
+const element = document.querySelector('.myClass');
+
+// By tag
+const element = document.querySelector('div');
+
+// All matching elements
+const elements = document.querySelectorAll('.item');</div>
+                </div>
+            </section>
+
+            <!-- innerHTML vs textContent -->
+            <section>
+                <h2>2️⃣ innerHTML vs textContent - Modifying Content</h2>
+                
+                <div class="demo-box">
+                    <h4>Try it:</h4>
+                    <button onclick="setInnerHTML()">Set with innerHTML</button>
+                    <button onclick="setTextContent()">Set with textContent</button>
+                    <div id="demo-element">Click buttons to change me!</div>
+                </div>
+
+                <div class="concept-section">
+                    <h3>Key Difference:</h3>
+                    <p><strong>innerHTML:</strong> Sets HTML content (renders HTML tags)</p>
+                    <p><strong>textContent:</strong> Sets text only (ignores HTML tags - SAFER)</p>
+                </div>
+
+                <div class="warning">
+                    <strong>⚠️ Security Warning:</strong> Never use innerHTML with user input! Use textContent instead.
+                </div>
+            </section>
+
+            <!-- addEventListener Section -->
+            <section>
+                <h2>3️⃣ addEventListener() - Handling Events</h2>
+                
+                <div class="demo-box">
+                    <h4>Try it:</h4>
+                    <p>Events: Click, Hover, Input, Type, etc.</p>
+                    <button id="clickBtn">Click Me!</button>
+                    <button id="hoverBtn">Hover Over Me</button>
+                    <div class="input-group">
+                        <input type="text" id="textInput" placeholder="Type something...">
+                    </div>
+                    <div id="output"></div>
+                </div>
+
+                <div class="concept-section">
+                    <h3>Common Events:</h3>
+                    <div class="code-block">click      - When element is clicked
+mouseover  - When mouse enters element
+mouseout   - When mouse leaves element
+input      - While typing in input
+keydown    - When keyboard key pressed
+submit     - When form is submitted
+change     - When value changes</div>
+                </div>
+            </section>
+
+            <!-- classList Section -->
+            <section>
+                <h2>4️⃣ classList - Managing CSS Classes</h2>
+                
+                <div class="demo-box">
+                    <h4>Try it:</h4>
+                    <style>
+                        .highlight {
+                            background: yellow;
+                            font-weight: bold;
+                            padding: 10px;
+                        }
+                        .hidden {
+                            display: none;
+                        }
+                    </style>
+                    <button onclick="toggleClass()">Toggle Highlight</button>
+                    <p id="classDemo">This text can be highlighted!</p>
+                </div>
+
+                <div class="concept-section">
+                    <h3>Methods:</h3>
+                    <div class="code-block">element.classList.add('class');      // Add class
+element.classList.remove('class');   // Remove class
+element.classList.toggle('class');   // Toggle class
+element.classList.contains('class'); // Check class</div>
+                </div>
+            </section>
+
+            <!-- Style Property Section -->
+            <section>
+                <h2>5️⃣ style Property - Direct Styling</h2>
+                
+                <div class="demo-box">
+                    <h4>Try it:</h4>
+                    <button onclick="changeStyle('red')">Make Red</button>
+                    <button onclick="changeStyle('blue')">Make Blue</button>
+                    <button onclick="changeStyle('green')">Make Green</button>
+                    <p id="styleDemo" style="padding: 20px; margin-top: 10px; border-radius: 5px; background: gray; color: white; text-align: center;">Click a button to change my color!</p>
+                </div>
+
+                <div class="concept-section">
+                    <h3>Code Example:</h3>
+                    <div class="code-block">element.style.color = 'red';
+element.style.fontSize = '20px';
+element.style.backgroundColor = 'blue';
+element.style.display = 'none';
+element.style.paddingTop = '10px';</div>
+                </div>
+            </section>
+
+            <!-- Complete Example -->
+            <section>
+                <h2>🔗 Complete Example - Interactive Form</h2>
+                
+                <div class="demo-box">
+                    <h4>Try it:</h4>
+                    <div class="input-group">
+                        <input type="text" id="userName" placeholder="Enter your name">
+                    </div>
+                    <button onclick="handleFormSubmit()">Submit</button>
+                    <div id="formOutput"></div>
+                </div>
+
+                <div class="concept-section">
+                    <h3>What's happening:</h3>
+                    <ol>
+                        <li>User types in the input field</li>
+                        <li>User clicks Submit button</li>
+                        <li>JavaScript gets the input value</li>
+                        <li>JavaScript displays a message</li>
+                    </ol>
+                </div>
+            </section>
+
+            <div class="section-divider"></div>
+
+            <!-- Projects Section -->
+            <section>
+                <h2>🚀 Three Practical Projects</h2>
+                <p>These are complete applications built with DOM manipulation:</p>
+
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <h3>🔢 Counter App</h3>
+                        <p>Interactive counter with increase, decrease, and reset buttons. Watch the color change!</p>
+                        <a href="Projects/01_counterApp.html">Open Project →</a>
+                    </div>
+
+                    <div class="project-card">
+                        <h3>🎨 Color Changer</h3>
+                        <p>Pick colors, generate random colors, and your choice is saved automatically!</p>
+                        <a href="Projects/02_colorChanger.html">Open Project →</a>
+                    </div>
+
+                    <div class="project-card">
+                        <h3>✅ Form Validation</h3>
+                        <p>Real-time validation with instant feedback. Green for valid, red for invalid!</p>
+                        <a href="Projects/03_formValidation.html">Open Project →</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Cheat Sheet -->
+            <section>
+                <h2>📝 DOM Manipulation Cheat Sheet</h2>
+                
+                <div class="concept-section">
+                    <h3>Selecting Elements</h3>
+                    <div class="code-block">document.getElementById('id')
+document.querySelector('.class')
+document.querySelectorAll('div')</div>
+                </div>
+
+                <div class="concept-section">
+                    <h3>Modifying Content</h3>
+                    <div class="code-block">el.innerHTML = '<h1>HTML</h1>';
+el.textContent = 'Just text';
+el.innerText = 'Text with formatting';</div>
+                </div>
+
+                <div class="concept-section">
+                    <h3>Handling Events</h3>
+                    <div class="code-block">el.addEventListener('click', () => {
+    console.log('Clicked!');
+});
+
+el.addEventListener('input', (e) => {
+    console.log(e.target.value);
+});</div>
+                </div>
+
+                <div class="concept-section">
+                    <h3>Managing Classes & Styles</h3>
+                    <div class="code-block">el.classList.add('active');
+el.classList.remove('hidden');
+el.classList.toggle('highlight');
+
+el.style.color = 'red';
+el.style.fontSize = '20px';</div>
+                </div>
+            </section>
+
+            <!-- Key Concepts -->
+            <section>
+                <h2>✅ Key Concepts You Should Know</h2>
+                <div class="tip">
+                    <p>✓ Understand the DOM tree structure</p>
+                    <p>✓ Select elements accurately with selectors</p>
+                    <p>✓ Modify content and styles dynamically</p>
+                    <p>✓ Handle user events properly</p>
+                    <p>✓ Manage element classes efficiently</p>
+                    <p>✓ Use localStorage to persist data</p>
+                    <p>✓ Validate user input</p>
+                    <p>✓ Provide user feedback</p>
+                </div>
+            </section>
+
+            <!-- Resources -->
+            <section>
+                <h2>📚 Theory Files</h2>
+                <div class="nav-buttons">
+                    <a href="querySelector.md" style="display: inline-block; padding: 10px 20px; background: #667eea; color: white; text-decoration: none; border-radius: 5px;">querySelector Guide</a>
+                    <a href="innerHTML-textContent.md" style="display: inline-block; padding: 10px 20px; background: #667eea; color: white; text-decoration: none; border-radius: 5px;">innerHTML vs textContent</a>
+                    <a href="addEventListener.md" style="display: inline-block; padding: 10px 20px; background: #667eea; color: white; text-decoration: none; border-radius: 5px;">addEventListener Guide</a>
+                </div>
+            </section>
+        </div>
+
+        <footer>
+            <h3>🎉 Day 4 Complete!</h3>
+            <p>Master DOM Manipulation and build interactive web applications</p>
+            <p>&copy; 2024 JavaScript Learning Path</p>
+        </footer>
+    </div>
+
+    <script>
+        // querySelector Demo
+        function demoQuerySelector() {
+            const output = document.getElementById('output');
+            const el = document.querySelector('#demo-element');
+            output.innerHTML = `
+                ✓ Found element: ${el.tagName}<br>
+                ✓ Current text: "${el.innerText}"<br>
+                ✓ Using querySelector('.demo-box'): Found!
+            `;
+        }
+
+        // innerHTML Demo
+        function setInnerHTML() {
+            const el = document.getElementById('demo-element');
+            el.innerHTML = '<strong>Changed with innerHTML! 🎉</strong>';
+        }
+
+        // textContent Demo
+        function setTextContent() {
+            const el = document.getElementById('demo-element');
+            el.textContent = '<b>This is textContent (tags shown as text)</b>';
+        }
+
+        // Event Listeners
+        document.getElementById('clickBtn').addEventListener('click', () => {
+            document.getElementById('output').innerHTML = '✓ Button was clicked!';
+        });
+
+        document.getElementById('hoverBtn').addEventListener('mouseover', () => {
+            document.getElementById('output').innerHTML = '✓ You hovered over the button!';
+        });
+
+        document.getElementById('hoverBtn').addEventListener('mouseout', () => {
+            document.getElementById('output').innerHTML = '✓ You left the button';
+        });
+
+        document.getElementById('textInput').addEventListener('input', (e) => {
+            document.getElementById('output').innerHTML = `✓ You typed: "${e.target.value}"`;
+        });
+
+        // classList Demo
+        function toggleClass() {
+            const el = document.getElementById('classDemo');
+            el.classList.toggle('highlight');
+        }
+
+        // Style Demo
+        function changeStyle(color) {
+            const el = document.getElementById('styleDemo');
+            el.style.backgroundColor = color;
+        }
+
+        // Form Demo
+        function handleFormSubmit() {
+            const input = document.getElementById('userName');
+            const output = document.getElementById('formOutput');
+            
+            if (input.value.trim() === '') {
+                output.innerHTML = '<span style="color: red;">❌ Please enter your name!</span>';
+            } else {
+                output.innerHTML = `<span style="color: green;">✓ Hello, ${input.value}! Welcome! 👋</span>`;
+            }
+        }
+    </script>
+</body>
+</html>
